@@ -4,9 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function liveTime() {
+  var greeting = React.createElement('h1', {}, 'Hello, World!');
+  var clock = React.createElement('h2', {}, `It is ${new Date().toLocaleTimeString()}`);
+  var app = React.createElement('div', {}, greeting, clock);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  ReactDOM.render(
+    app,
+    document.getElementById('react-app-root')
+  );
+}
+
+setInterval(liveTime, 1000);
